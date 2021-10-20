@@ -1,0 +1,36 @@
+class Encrypter {
+    private static Validator validator = new Validator();
+    
+    public static String getEncryptedName(String name)
+    {
+        boolean validation = validator.validate(name);
+        
+        
+        if(validation){
+            
+            //Turning the name to lower case
+            String lowerCaseName = name.toLowerCase();
+            
+            //String reversal
+            char[] letters = lowerCaseName.toCharArray();
+            char[] reverseName = new char [letters.length];
+        
+            int j =0;
+           
+            for(int i = letters.length - 1; i >= 0; i--)
+            {
+                reverseName[j] = letters[i];
+                j++;
+            }
+            
+            String newName = String.valueOf(reverseName);
+            
+            return newName;
+        }
+        else{
+            throw new IllegalArgumentException("Try again with valid name");
+        }
+        
+    }
+
+}
